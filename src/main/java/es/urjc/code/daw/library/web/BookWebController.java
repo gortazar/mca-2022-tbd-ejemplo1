@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import es.urjc.code.daw.library.book.Book;
 import es.urjc.code.daw.library.book.BookService;
@@ -19,9 +20,13 @@ public class BookWebController {
 	private BookService service;
 	
 	@GetMapping("/")
-	public String showBooks(Model model) {
+	public String showBooks(Model model, @RequestParam String title) {
 
-		model.addAttribute("books", service.findAll());
+		if(title == null || "".equals(title)) {
+			model.addAttribute("books", service.findAll());
+		} else {
+			model.addAttribute("books", service.findByTitle(title));
+		}
 		
 		return "books";
 	}
