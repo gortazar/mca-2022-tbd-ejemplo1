@@ -4,7 +4,9 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
+import org.togglz.core.manager.FeatureManager;
 
+import es.urjc.code.daw.library.Features;
 import es.urjc.code.daw.library.notification.NotificationService;
 
 /* Este servicio se usará para incluir la funcionalidad que sea 
@@ -15,10 +17,12 @@ public class BookService {
 
 	private BookRepository repository;
 	private NotificationService notificationService;
+	private FeatureManager featureManager;
 
-	public BookService(BookRepository repository, NotificationService notificationService){
+	public BookService(BookRepository repository, NotificationService notificationService, FeatureManager featureManager){
 		this.repository = repository;
 		this.notificationService = notificationService;
+		this.featureManager = featureManager;
 	}
 
 	public Optional<Book> findOne(long id) {
@@ -31,6 +35,13 @@ public class BookService {
 
 	public List<Book> findAll() {
 		return repository.findAll();
+	}
+
+	public Book findByTitle(String title) {
+		if(!featureManager.isActive(Features.FIND_BY_TITLE)) {
+			throw new UnsupportedOperationException("Find by title is still under development");
+		}
+		return repository.findByTitle(title);
 	}
 
 	public Book save(Book book) {

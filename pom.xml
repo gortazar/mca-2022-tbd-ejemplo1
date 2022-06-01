@@ -49,7 +49,7 @@
 			<artifactId>togglz-console</artifactId>
 			<version>3.1.2</version>
 		</dependency>
-		
+
 		<!-- DATABASE DEPENDENCIES -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -65,6 +65,12 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+  <groupId>org.togglz</groupId>
+  <artifactId>togglz-junit</artifactId>
+  <version>3.1.2</version>
+  <scope>test</scope>
+</dependency>
 		<!-- REST ASSURED -->
 		<dependency>
 			<groupId>io.rest-assured</groupId>
