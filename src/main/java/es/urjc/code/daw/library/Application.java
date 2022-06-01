@@ -6,8 +6,6 @@ import org.springframework.context.annotation.Bean;
 import org.togglz.core.manager.EnumBasedFeatureProvider;
 import org.togglz.core.spi.FeatureProvider;
 
-import es.urjc.Features;
-
 @SpringBootApplication
 public class Application {
 

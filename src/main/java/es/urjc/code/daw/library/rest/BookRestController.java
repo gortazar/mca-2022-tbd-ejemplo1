@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,8 +29,11 @@ public class BookRestController {
 	private BookService service;
 
 	@GetMapping("/")
-	public Collection<Book> getBooks() {
-		return service.findAll();
+	public Collection<Book> getBooks(@RequestParam String title) {
+		if(title == null || "".equals(title)) {
+			return service.findAll();
+		}
+		return service.findByTitle(title);
 	}
 
 	@GetMapping("/{id}")

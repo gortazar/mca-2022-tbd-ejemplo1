@@ -37,7 +37,7 @@ public class BookService {
 		return repository.findAll();
 	}
 
-	public Book findByTitle(String title) {
+	public List<Book> findByTitle(String title) {
 		if(!featureManager.isActive(Features.FIND_BY_TITLE)) {
 			throw new UnsupportedOperationException("Find by title is still under development");
 		}
