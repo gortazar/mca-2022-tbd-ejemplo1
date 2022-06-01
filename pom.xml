@@ -37,6 +37,19 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 		</dependency>
+
+				<dependency>
+			<groupId>org.togglz</groupId>
+			<artifactId>togglz-spring-boot-starter</artifactId>
+			<version>3.1.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.togglz</groupId>
+			<artifactId>togglz-console</artifactId>
+			<version>3.1.2</version>
+		</dependency>
+		
 		<!-- DATABASE DEPENDENCIES -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
